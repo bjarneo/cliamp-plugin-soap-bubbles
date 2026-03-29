@@ -66,7 +66,11 @@ function p:init(r, c)
     initialized = false
 end
 
-function p:render(bands, frame)
+function p:render(bands, frame, r, c)
+    -- Update dimensions from render args (handles fullscreen toggle).
+    if r and r > 0 then rows = r end
+    if c and c > 0 then cols = c end
+
     if not initialized then
         init_bubbles()
     end
